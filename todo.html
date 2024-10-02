@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    
+        <h1>My Todo list</h1>
+        <input type="text" id="newtask">
+        <input type="button" value="add" id="addButton">
+        <input type="button" value="clear" id="clearButton">
+        <ul id="tasklist"> 
+            <li>Task 1</li>
+            <li>Task 2</li>
+        </ul>
+            <h2>math solution</h2>
+            <input type="text" id="x"> x +
+            <input type="text"id="y"> y = 
+            <input type="text" id="sum"> 
+            <input type="button" value="cal" id="cal">
+
+
+        
+    <script>
+        let xfield = document.getElementById("x");
+        let yfield = document.getElementById("y");
+        let sumfield = document.getElementById("sum");
+        let calbutton = document.getElementById("cal");
+
+
+        calbutton.onclick = function(){
+         let xvalue = parseInt(xfield.value);
+         let yvalue = parseInt(yfield.value);
+         
+         if(!isNaN(xvalue) && !isNaN(yvalue)){
+            let sum = xvalue + yvalue;
+            sumfield.value = sum;
+         } else {
+            sumfield.value = "invalid input";
+         }
+
+        }
+        let tasks = ["Task 1","Task 2"];
+        let addButton = document.getElementById("addButton");
+        let clearButton = document.getElementById("clearButton");
+        let tasklist = document.getElementById("tasklist");
+        function renderTasks() {
+            tasklist.innerHTML = ""; // Clear the task list
+            tasks.forEach(function(task) {
+                let taskItem = document.createElement("li");
+                taskItem.innerText = task;
+                tasklist.appendChild(taskItem);
+            });
+        }
+
+        addButton.onclick = function() {
+            let taskfield = document.getElementById("newtask");
+            let taskItem = document.createElement("li");
+            taskItem.innerText = taskfield.value;
+            tasklist.appendChild(taskItem);
+            tasks.push(taskfield.value);
+            taskfield.value = "";
+            renderTasks();
+
+        }
+        clearButton.onclick = function(){
+            tasks.pop(); // Remove the last task from the array
+            renderTasks();
+            }
+        
+    </script>
+</body>
+</html>

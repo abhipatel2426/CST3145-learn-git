@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <!--script src="https://unpkg.com/vue"></script-->
+ <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+</head>
+<body>
+ <div id="App"> 
+ <h1>My TodoList</h1>
+ 
+ 
+ <li>task 1</li>
+ <li>task 2</li>
+ <ul id="tasklist"></ul>
+ <input type="text" id="newTask" v-model="newTask">
+ <button id="addButton" v-on:click="addItem">add task</button>
+ </div>
+ <script>
+    let app = new Vue({
+    el: '#App',
+    data: { newTask: ''},
+    methods: {
+    addItem: function() {
+    let newItem = document.createElement('li');
+    newItem.innerText = app.newTask;
+    document.getElementById('tasklist').appendChild(newItem)
+    app.newTask = '';
+    }
+    }
+    })
+   </script>
+   </body>
+   </html>
+   
